@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+  
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+  <title>Main</title>
+
+  
+  
+  <link rel="stylesheet" href="style.css" type="text/css">
+
+</head><body>
+<img style="width: 311px; height: 65px;" src="images/logoTPG.png">
+<div class="topnav"><a href="login.html" target="_top">Logout</a>
+<a href="users.html">Users</a>
+<a href="history.html">History</a>
+<a href="today.html">Today</a>
+<a class="active" href="main.html">Enter Data</a>
+</div>
+
+<br>
+
+<div class="container">
+<form action="action_rfc.php"> 
+		<label for="numfrc">RFC</label> <input id="numrfc" name="numrfc" placeholder="RFC Number" type="number"> 
+		<label for="timerfc">Time Completed</label> <input id="timerfc" name="timerfc" placeholder="HH:MM" type="time"> 
+		<label for="teamrfc">Team</label>
+			<select id="teamrfc" name="teamrfc">
+			  <option value="support">Support</option>
+			  <option value="infrastructure">Infrastructure</option>
+			  <option value="release">Release</option>
+			</select>
+		<label for="descriptionrfc">Description</label> <textarea id="descriptionrfc" name="descriptionrfc" placeholder="Brief Decription..." style="height: 15px;"></textarea> 
+		<input value="Submit" type="submit">
+</form>
+</div>
+
+<br>
+
+<div class="container">
+<form action="action_issue.php"> 
+		<label for="numissue">Ticket Number</label> <input id="numissue" name="numissue" placeholder="Ticket Number" type="number"> 
+		<label for="timestartissue">Time Started</label> <input id="timestartissue" name="timestartissue" placeholder="HH:MM" type="time"> 
+		<label for="timeendissue">Time Resolved</label> <input id="timeendissue" name="timeendissue" placeholder="HH:MM" type="time"> 
+		<label for="teamissue">Impact</label>
+			<select id="teamissue" name="teamissue">
+			  <option value="client">Client</option>
+			  <option value="internal">Internal</option>
+			</select>
+		<label for="descriptionissue">Description</label> <textarea id="descriptionissue" name="descriptionissue" placeholder="Brief Decription..." style="height: 15px;"></textarea> 
+		<input value="Submit" type="submit">
+</form>
+</div>
+
+<br>
+action="action_events.php"
+<div class="container">
+<form onsubmit="return false"> 
+		<label for="numevents">Ticket Number</label> <input id="numevents" name="numevents" placeholder="Ticket Number" type="number"> 
+		<label for="timestartevents">Time Started</label> <input id="timestartevents" name="timestartevents" placeholder="HH:MM" type="datetime-local"> 
+		<label for="timeendevents">Time Resolved</label> <input id="timeendevents" name="timeendevents" placeholder="HH:MM" type="datetime-local"> 
+		<label for="teamevents">Impact</label>  
+			<select id="teamevents" name="teamevents">
+			  <option value="client">Client</option>
+			  <option value="internal">Internal</option>
+			</select>
+	    <label for="descriptionevents">Description</label> <textarea id="descriptionevents" name="descriptionevents" placeholder="Brief Decription..." style="height: 15px;"></textarea> 
+	    <input value="Submit" type="submit" onclick="results();">
+</form>
+</div>
+
+<br> 
+
+<div class="container" id="store">
+
+</div>
+
+
+
+<script> 
+	
+	function results() {
+		
+		var div = document.getElementById('store');
+		var input = document.createElement('input');
+		var ticketnum = document.getElementById('numevents').value;
+		var timestarted = document.getElementById('timestartevents').value;
+		var timeresolved = document.getElementById('timeendevents').value;
+		var impact = document.getElementById('teamevents').value;
+		var description = document.getElementById('descriptionevents').value;
+		
+		document.getElementById('store').innerHTML = "Ticket Number: " + ticketnum + " .. Time Started: " + timestarted + " .. Time Resolved: " + timeresolved + " .. Impact: " + impact + " .. Description: " + description;
+		
+		console.log("Div: ", div);
+		console.log("Input: ", input);
+		console.log("Ticket: ", ticketnum);
+		console.log("Time1: ", timestarted);
+		console.log("Time2: ", timeresolved);
+		console.log("Impact: ", impact);
+		console.log("Description: ", description);	
+	}
+	
+</script>
+</body></html>
